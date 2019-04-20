@@ -1,0 +1,6 @@
+[submodule "Code/BlackRoot"]
+	path = Code/BlackRoot
+	url = https://github.com/JeroenDStout/Ap-Code-BlackRoot.git
+[submodule "Util/Repo"]
+	path = Util/Repo
+	url = https://github.com/JeroenDStout/Ap-Util-Repo.git
