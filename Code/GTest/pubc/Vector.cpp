@@ -70,18 +70,19 @@ TEST(VectorDef, Vector_Abstract) {
 
 TEST(VectorDef, Vector_i3_Operators_Inherited) {
     vector_i3 a = { 1, 2, 3 };
-    EXPECT_EQ(a[0], 1);
-    EXPECT_EQ(a[1], 2);
-    EXPECT_EQ(a[2], 3);
+
+    EXPECT_EQ(a.elem<0>(), 1);
+    EXPECT_EQ(a.elem<1>(), 2);
+    EXPECT_EQ(a.elem<2>(), 3);
 
     vector_i3 b = a;
     EXPECT_TRUE(a == b);
     EXPECT_TRUE(b == a);
 
     a.set_to(4);
-    EXPECT_EQ(a[0], 4);
-    EXPECT_EQ(a[1], 4);
-    EXPECT_EQ(a[2], 4);
+    EXPECT_EQ(a.elem<0>(), 4);
+    EXPECT_EQ(a.elem<1>(), 4);
+    EXPECT_EQ(a.elem<2>(), 4);
 
     EXPECT_TRUE(a != b);
     EXPECT_TRUE(b != a);

@@ -26,5 +26,8 @@
     <ClCompile Include="..\Pubc\Quaternion.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="..\Pubc\Matrix.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

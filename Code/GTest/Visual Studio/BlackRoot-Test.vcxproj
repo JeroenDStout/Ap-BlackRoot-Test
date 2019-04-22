@@ -56,6 +56,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Pubc\Matrix.cpp" />
     <ClCompile Include="..\Pubc\Orthovector.cpp" />
     <ClCompile Include="..\Pubc\Quaternion.cpp" />
     <ClCompile Include="..\pubc\Tuple.cpp" />
