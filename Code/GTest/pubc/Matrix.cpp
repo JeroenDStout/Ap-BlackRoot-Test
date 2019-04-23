@@ -6,24 +6,88 @@
 
 #include "BlackRoot/Pubc/Tensor.h"
 
-using mat_1x1 = BlackRoot::Math::MatrixDef<float, 1, 1>::MatrixAbstract;
-using mat_2x2 = BlackRoot::Math::MatrixDef<float, 2, 2>::MatrixAbstract;
-using mat_3x3 = BlackRoot::Math::MatrixDef<float, 3, 3>::MatrixAbstract;
-using mat_4x4 = BlackRoot::Math::MatrixDef<float, 4, 4>::MatrixAbstract;
+using mat_1x1 = BlackRoot::Math::MatrixDef<double, 1, 1>::MatrixAbstract;
+using mat_2x2 = BlackRoot::Math::MatrixDef<double, 2, 2>::MatrixAbstract;
+using mat_3x3 = BlackRoot::Math::MatrixDef<double, 3, 3>::MatrixAbstract;
+using mat_4x4 = BlackRoot::Math::MatrixDef<double, 4, 4>::MatrixAbstract;
+using mat_2x3 = BlackRoot::Math::MatrixDef<double, 2, 3>::MatrixAbstract;
+using mat_3x2 = BlackRoot::Math::MatrixDef<double, 3, 2>::MatrixAbstract;
+using mat_4x3 = BlackRoot::Math::MatrixDef<double, 4, 3>::MatrixAbstract;
+using mat_3x4 = BlackRoot::Math::MatrixDef<double, 3, 4>::MatrixAbstract;
+
+using vec_2   = BlackRoot::Math::VectorDef<double, 2>::VectorAbstract;
+using vec_3   = BlackRoot::Math::VectorDef<double, 3>::VectorAbstract;
+using vec_4   = BlackRoot::Math::VectorDef<double, 4>::VectorAbstract;
 
 TEST(MatrixDef, Matrix_Abstract) {
 }
 
 TEST(MatrixDef, Matrix_Determinants) {
-	mat_1x1 a;
-	a.elem<0,0>() = 1.f;
+	mat_1x1 a = { 1. };
 	
-	mat_2x2 b;
-	b.elem<0,0>() = 1.f;
-	b.elem<0,1>() = 2.f;
-	b.elem<1,0>() = 5.f;
-	b.elem<1,1>() = 3.f;
+	mat_2x2 b = { 1., 2.,
+                  5., 3. };
+	
+	mat_3x3 c = { 6.,  1.,  1.,
+                  4., -2.,  5.,
+                  2.,  8.,  7.  };
 
-    EXPECT_EQ(a.det(), 1.f);
-    EXPECT_EQ(b.det(), (1.f*3.) - (2.f*5.f));
+    EXPECT_EQ(a.det(),    1.);
+    EXPECT_EQ(b.det(),   -7.);
+    EXPECT_EQ(c.det(), -306.);
+}
+
+TEST(MatrixDef, Matrix_And_Vector) {
+    {
+        auto m1 = mat_2x3( 1.f, -1.f,  2.f,
+                           0.f, -3.f,  1.f );
+        auto v1 = vec_3(2., 1., 0.);
+        auto v_m1v1 = m1.mul(v1);
+        EXPECT_EQ(v_m1v1, vec_2(1., -3.));
+    }
+    {
+        auto m1 = mat_4x3( 1.f,  2.f,  3.f,
+                           4.f,  5.f,  6.f,
+                           7.f,  8.f,  9.f,
+                          10.f, 11.f, 12.f );
+        auto v1 = vec_3(-2., 1., 0.);
+        auto v_m1v1 = m1.mul(v1);
+        EXPECT_EQ(v_m1v1, vec_4(0., -3., -6., -9.));
+    }
+}
+
+TEST(MatrixDef, Matrix_And_Matrix) {
+    {
+        auto m1 = mat_2x3( 0.,  4., -2.,
+                          -4., -3.,  0. );
+        auto m2 = mat_3x2( 0.,  1.,
+                           1., -1.,
+                           2.,  3. );
+
+        auto v_m1m2 = m1 * m2;
+        EXPECT_EQ(decltype(v_m1m2)::Row_Count, 2);
+        EXPECT_EQ(decltype(v_m1m2)::Column_Count, 2);
+        EXPECT_EQ(v_m1m2, vec_4(0., -10., -3., -1.));
+    }
+    {
+        auto m1 = mat_2x3( 1.,  2.,  3.,
+                           4.,  5.,  6. );
+        auto m2 = mat_3x2( 1.,  2.,
+                           3.,  4., 
+                           5.,  6. );
+                           
+        auto m_m1m2 = m1 * m2;
+        EXPECT_EQ(decltype(m_m1m2)::Row_Count, 2);
+        EXPECT_EQ(decltype(m_m1m2)::Column_Count, 2);
+        EXPECT_EQ(m_m1m2, mat_2x2(22., 28.,
+                                  49., 64.));
+                           
+        auto m_m2m1 = m2 * m1;
+        EXPECT_EQ(decltype(m_m2m1)::Row_Count, 3);
+        EXPECT_EQ(decltype(m_m2m1)::Column_Count, 3);
+        EXPECT_EQ(m_m2m1, mat_3x3( 9., 12., 15.,
+                                  19., 26., 33.,
+                                  29., 40., 51.));
+
+    }
 }
