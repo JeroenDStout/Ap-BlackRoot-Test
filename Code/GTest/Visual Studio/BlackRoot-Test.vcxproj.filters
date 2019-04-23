@@ -29,5 +29,8 @@
     <ClCompile Include="..\Pubc\Matrix.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="..\Pubc\Translated Map.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

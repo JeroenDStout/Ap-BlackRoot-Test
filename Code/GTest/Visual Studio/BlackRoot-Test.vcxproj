@@ -25,6 +25,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <ProjectName>BlackRoot-Test-Math</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -59,6 +60,7 @@
     <ClCompile Include="..\Pubc\Matrix.cpp" />
     <ClCompile Include="..\Pubc\Orthovector.cpp" />
     <ClCompile Include="..\Pubc\Quaternion.cpp" />
+    <ClCompile Include="..\Pubc\Translated Map.cpp" />
     <ClCompile Include="..\pubc\Tuple.cpp" />
     <ClCompile Include="..\Pubc\Vector.cpp" />
   </ItemGroup>
