@@ -115,6 +115,5 @@ TEST(MatrixDef, Matrix_And_Matrix) {
         EXPECT_EQ(m_m2m1, mat_3x3( 9., 12., 15.,
                                   19., 26., 33.,
                                   29., 40., 51.));
-
     }
 }
