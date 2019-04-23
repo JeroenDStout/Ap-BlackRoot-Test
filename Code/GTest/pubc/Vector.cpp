@@ -88,6 +88,9 @@ TEST(VectorDef, Vector_i3_Operators_Inherited) {
     EXPECT_TRUE(b != a);
 
     EXPECT_TRUE(a.is_real());
+
+    auto copy = a.as_tuple().as<vector_i3>();
+    EXPECT_TRUE(a == copy);
 }
 
 TEST(VectorDef, Vector_i3_Operators) {
