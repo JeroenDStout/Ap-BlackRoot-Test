@@ -49,6 +49,58 @@ TEST(MatrixDef, Matrix_Abstract) {
     EXPECT_EQ(mat_10x10::Operating_Dimensionality, 10);
 }
 
+TEST(MatrixDef, Matrix_Operators_Inherited) {
+    mat_3x3 a = { 1., 2., 3.,
+                  4., 5., 6.,
+                  7., 8., 9. };
+    EXPECT_EQ((a.elem<0, 0>()), 1.);
+    EXPECT_EQ((a.elem<0, 1>()), 2.);
+    EXPECT_EQ((a.elem<0, 2>()), 3.);
+    EXPECT_EQ((a.elem<1, 0>()), 4.);
+    EXPECT_EQ((a.elem<1, 1>()), 5.);
+    EXPECT_EQ((a.elem<1, 2>()), 6.);
+    EXPECT_EQ((a.elem<2, 0>()), 7.);
+    EXPECT_EQ((a.elem<2, 1>()), 8.);
+    EXPECT_EQ((a.elem<2, 2>()), 9.);
+
+    auto & row = a.row<1>();
+    EXPECT_EQ(row, vec_3(4., 5., 6.));
+
+    auto row2 = row.as_impl();
+    EXPECT_EQ(decltype(row2)::Size, 3);
+    EXPECT_EQ(row, row2);
+
+    auto mat = a.as_impl();
+    EXPECT_EQ(mat, a);
+
+
+    mat_3x3 b = a;
+    EXPECT_TRUE(a == b);
+    EXPECT_TRUE(b == a);
+
+    a.set_to(4);
+    EXPECT_EQ((a.elem<0, 0>()), 4.);
+    EXPECT_EQ((a.elem<0, 1>()), 4.);
+    EXPECT_EQ((a.elem<0, 2>()), 4.);
+    EXPECT_EQ((a.elem<1, 0>()), 4.);
+    EXPECT_EQ((a.elem<1, 1>()), 4.);
+    EXPECT_EQ((a.elem<1, 2>()), 4.);
+    EXPECT_EQ((a.elem<2, 0>()), 4.);
+    EXPECT_EQ((a.elem<2, 1>()), 4.);
+    EXPECT_EQ((a.elem<2, 2>()), 4.);
+
+    EXPECT_TRUE(a != b);
+    EXPECT_TRUE(b != a);
+
+    EXPECT_TRUE(a.is_real());
+
+    auto copy = a.as_tuple().as<mat_3x3>();
+    EXPECT_TRUE(a == copy);
+}
+
+TEST(MatrixDef, Matrix_Operators) {
+}
+
 TEST(MatrixDef, Matrix_Determinants) {
 	mat_1x1 a = { 1. };
 	
