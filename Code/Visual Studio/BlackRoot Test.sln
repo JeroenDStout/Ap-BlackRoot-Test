@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Black Root", "..\BlackRoot\Visual Studio\Black Root.vcxproj", "{5644BBF8-3CB0-4067-BEE8-C4BA3C2C04F6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BlackRoot-Test", "..\GTest\Visual Studio\BlackRoot-Test.vcxproj", "{5B76DFB6-2706-497F-BEEB-F2839C93B5C3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BlackRoot-Test-Math", "..\GTest\Visual Studio\BlackRoot-Test-Math.vcxproj", "{5B76DFB6-2706-497F-BEEB-F2839C93B5C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
