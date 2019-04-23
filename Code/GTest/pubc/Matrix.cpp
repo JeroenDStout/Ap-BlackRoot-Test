@@ -14,12 +14,39 @@ using mat_2x3 = BlackRoot::Math::MatrixDef<double, 2, 3>::MatrixAbstract;
 using mat_3x2 = BlackRoot::Math::MatrixDef<double, 3, 2>::MatrixAbstract;
 using mat_4x3 = BlackRoot::Math::MatrixDef<double, 4, 3>::MatrixAbstract;
 using mat_3x4 = BlackRoot::Math::MatrixDef<double, 3, 4>::MatrixAbstract;
+using mat_10x10 = BlackRoot::Math::MatrixDef<double, 10, 10>::MatrixAbstract;
 
 using vec_2   = BlackRoot::Math::VectorDef<double, 2>::VectorAbstract;
 using vec_3   = BlackRoot::Math::VectorDef<double, 3>::VectorAbstract;
 using vec_4   = BlackRoot::Math::VectorDef<double, 4>::VectorAbstract;
 
 TEST(MatrixDef, Matrix_Abstract) {
+        // sizeof(...) returns >= 1
+    EXPECT_EQ(sizeof(BlackRoot::Math::MatrixDef<double, 1, 1>), 1);
+    EXPECT_EQ(sizeof(BlackRoot::Math::MatrixDef<double, 2, 2>), 1);
+    EXPECT_EQ(sizeof(BlackRoot::Math::MatrixDef<double, 3, 4>), 1);
+    EXPECT_EQ(sizeof(BlackRoot::Math::MatrixDef<double, 4, 3>), 1);
+
+    EXPECT_EQ(mat_1x1::Size, 1);
+    EXPECT_EQ(mat_2x2::Size, 4);
+    EXPECT_EQ(mat_3x3::Size, 9);
+    EXPECT_EQ(mat_3x4::Size, 12);
+    EXPECT_EQ(mat_4x3::Size, 12);
+    EXPECT_EQ(mat_10x10::Size, 100);
+
+    EXPECT_EQ(sizeof(mat_1x1::element), sizeof(double)*1);
+    EXPECT_EQ(sizeof(mat_2x2::element), sizeof(double)*4);
+    EXPECT_EQ(sizeof(mat_3x3::element), sizeof(double)*9);
+    EXPECT_EQ(sizeof(mat_3x4::element), sizeof(double)*12);
+    EXPECT_EQ(sizeof(mat_4x3::element), sizeof(double)*12);
+    EXPECT_EQ(sizeof(mat_10x10::element), sizeof(double)*100);
+
+    EXPECT_EQ(mat_1x1::Operating_Dimensionality, 1);
+    EXPECT_EQ(mat_2x2::Operating_Dimensionality, 2);
+    EXPECT_EQ(mat_3x3::Operating_Dimensionality, 3);
+    EXPECT_EQ(mat_3x4::Operating_Dimensionality, 4);
+    EXPECT_EQ(mat_4x3::Operating_Dimensionality, 3);
+    EXPECT_EQ(mat_10x10::Operating_Dimensionality, 10);
 }
 
 TEST(MatrixDef, Matrix_Determinants) {
