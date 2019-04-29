@@ -6,10 +6,10 @@
 
 #include "BlackRoot/Pubc/Tensor.h"
 
-using vector_f1 = BlackRoot::Math::OrthoVectorDef<float, 1>::OrthovectorAbstract;
-using vector_f2 = BlackRoot::Math::OrthoVectorDef<float, 2>::OrthovectorAbstract;
-using vector_f3 = BlackRoot::Math::OrthoVectorDef<float, 3>::OrthovectorAbstract;
-using vector_f4 = BlackRoot::Math::OrthoVectorDef<float, 4>::OrthovectorAbstract;
+using vector_f1 = BlackRoot::Math::OrthoVectorDef<float, 1>::OrthoVectorAbstract;
+using vector_f2 = BlackRoot::Math::OrthoVectorDef<float, 2>::OrthoVectorAbstract;
+using vector_f3 = BlackRoot::Math::OrthoVectorDef<float, 3>::OrthoVectorAbstract;
+using vector_f4 = BlackRoot::Math::OrthoVectorDef<float, 4>::OrthoVectorAbstract;
 
 TEST(OrthovectorDef, Orthovector_Abstract) {
     EXPECT_EQ(sizeof(BlackRoot::Math::OrthoVectorDef<int, 1>), 1);
