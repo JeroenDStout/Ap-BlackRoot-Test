@@ -14,4 +14,11 @@ echo --
 echo.
 python "Repo/util_fixsubmodules.py"
 
+echo.
+echo --
+echo -- Util Fix Submodules
+echo --
+echo.
+python "Repo/util_check_submodules.py"
+
 pause
